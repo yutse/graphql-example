@@ -25,12 +25,12 @@ const AddTodo = () => {
 
   return (
     <Mutation mutation={ADD_TODO}>
-      {(addTodo, { data }) => (
+      {(newTask, { data }) => (
         <div>
           <form
             onSubmit={e => {
               e.preventDefault();
-              addTodo({ variables: { title: input.value } });
+              newTask({ variables: { title: input.value } });
               input.value = "";
             }}
           >
