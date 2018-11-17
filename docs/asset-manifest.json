@@ -1,7 +1,14 @@
 {
-  "main.css": "static/css/main.c17080f1.css",
-  "main.css.map": "static/css/main.c17080f1.css.map",
-  "main.js": "static/js/main.46603d1b.js",
-  "main.js.map": "static/js/main.46603d1b.js.map",
-  "static/media/logo.svg": "static/media/logo.5d5d9eef.svg"
+  "main.css": "/graphql-example/static/css/main.b5b1b88f.chunk.css",
+  "main.js": "/graphql-example/static/js/main.98db828a.chunk.js",
+  "main.js.map": "/graphql-example/static/js/main.98db828a.chunk.js.map",
+  "static/js/1.60a820e2.chunk.js": "/graphql-example/static/js/1.60a820e2.chunk.js",
+  "static/js/1.60a820e2.chunk.js.map": "/graphql-example/static/js/1.60a820e2.chunk.js.map",
+  "runtime~main.js": "/graphql-example/static/js/runtime~main.ef9ab990.js",
+  "runtime~main.js.map": "/graphql-example/static/js/runtime~main.ef9ab990.js.map",
+  "static/media/logo.svg": "/graphql-example/static/media/logo.5d5d9eef.svg",
+  "static/css/main.b5b1b88f.chunk.css.map": "/graphql-example/static/css/main.b5b1b88f.chunk.css.map",
+  "index.html": "/graphql-example/index.html",
+  "precache-manifest.c37d64796976f1ce7917cbe06f24962d.js": "/graphql-example/precache-manifest.c37d64796976f1ce7917cbe06f24962d.js",
+  "service-worker.js": "/graphql-example/service-worker.js"
 }
