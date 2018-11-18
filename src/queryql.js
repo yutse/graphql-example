@@ -138,12 +138,13 @@ export class ExchangeRates1 extends React.Component {
                 <br />
                 tasks:
                 <br />
-                {!!item ?
-                  item.tasks.map(({ id, title }, index) => (
-                    <div key={index}>
-                      id:{id} title: {title}
-                    </div>
-                  )) : '請選擇'}
+                {!!item
+                  ? item.tasks.map(({ id, title, is_completed }, index) => (
+                      <div key={index}>
+                        id:{id}, title: {title}, {is_completed ? '已完成' : '未完成'}
+                      </div>
+                    ))
+                  : '請選擇'}
               </div>
             );
           }}
