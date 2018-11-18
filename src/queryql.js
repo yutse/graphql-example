@@ -37,41 +37,63 @@ const ADD_TODO = gql`
 //   );
 // };
 
-export const ExchangeRates = () => (
-  <Query
-    query={gql`
-      {
-        tasks {
-          id
-          title
-          is_completed
-          owner {
-            id
-            name
-          }
-        }
-      }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
+export class ExchangeRates extends React.Component {
+  state = { value: '' };
 
-      return data.tasks.map(({ id, title, is_completed, owner }, index) => (
-        <div key={index}>
-          <p style={{ paddingLeft: '15px', textAlign: 'left' }}>
-            {`id: ${id}`}
-            <br />
-            {`title: ${title}`}
-            <br />
-            {`is_completed: ${is_completed}`}
-            <br />
-            {`owner.id: ${owner.id}`}
-            <br />
-            {`owner.name: ${owner.name}`}
-          </p>
-        </div>
-      ));
-    }}
-  </Query>
-);
+  render() {
+    return (
+      <div>
+        <Query
+          query={gql`
+            {
+              tasks {
+                id
+                title
+                is_completed
+                owner {
+                  id
+                  name
+                }
+              }
+            }
+          `}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error :(</p>;
+
+            let item = data.tasks.find(x => x.id == this.state.value);
+            return (
+              <div>
+                <select
+                  onChange={e => {
+                    console.log(e.target.value);
+                    this.setState({ value: e.target.value });
+                  }}
+                >
+                  {data.tasks.map(({ id, title, is_completed, owner }, index) => (
+                    <option key={index} value={id}>
+                      {title}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                owner:
+                <br />
+                <div>
+                  id: {!!item ? item.owner.id : 'none'}
+                  <br />
+                  name: {!!item ? item.owner.name : 'none'}
+                </div>
+              </div>
+            );
+          }}
+        </Query>
+      </div>
+    );
+  }
+}
+
+// export const ExchangeRates = () => (
+
+// );
