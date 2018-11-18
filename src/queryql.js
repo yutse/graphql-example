@@ -71,6 +71,7 @@ export class ExchangeRates extends React.Component {
                     this.setState({ value: e.target.value });
                   }}
                 >
+                  <option value={''}>{'請選擇'}</option>
                   {data.tasks.map(({ id, title, is_completed, owner }, index) => (
                     <option key={index} value={id}>
                       {title}
@@ -81,9 +82,9 @@ export class ExchangeRates extends React.Component {
                 owner:
                 <br />
                 <div>
-                  id: {!!item ? item.owner.id : 'none'}
+                  id: {!!item ? item.owner.id : '請選擇'}
                   <br />
-                  name: {!!item ? item.owner.name : 'none'}
+                  name: {!!item ? item.owner.name : '請選擇'}
                 </div>
               </div>
             );
@@ -94,6 +95,60 @@ export class ExchangeRates extends React.Component {
   }
 }
 
-// export const ExchangeRates = () => (
+export class ExchangeRates1 extends React.Component {
+  state = { value: '' };
 
-// );
+  render() {
+    return (
+      <div>
+        <Query
+          query={gql`
+            {
+              users {
+                id
+                name
+                tasks {
+                  id
+                  title
+                }
+              }
+            }
+          `}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error :(</p>;
+
+            let item = data.users.find(x => x.id == this.state.value);
+            return (
+              <div>
+                <select
+                  onChange={e => {
+                    console.log(e.target.value);
+                    this.setState({ value: e.target.value });
+                  }}
+                >
+                  <option value={''}>{'請選擇'}</option>
+                  {data.users.map(({ id, name }, index) => (
+                    <option key={index} value={id}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                tasks:
+                <br />
+                {!!item ?
+                  item.tasks.map(({ id, title }, index) => (
+                    <div key={index}>
+                      id:{id} title: {title}
+                    </div>
+                  )) : '請選擇'}
+              </div>
+            );
+          }}
+        </Query>
+      </div>
+    );
+  }
+}
