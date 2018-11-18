@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { ApolloProvider } from 'react-apollo';
 import { ExchangeRates } from './queryql';
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
-  //   uri: 'http://3349b50b.ngrok.io/graphql/',
-  uri: 'http://localhost:4000/',
+    uri: 'http://ee1cfce1.ngrok.io/graphql/',
+  // uri: 'http://localhost:4000/',
 });
 
 class App extends Component {

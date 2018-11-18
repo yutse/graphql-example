@@ -41,14 +41,9 @@ export const ExchangeRates = () => (
   <Query
     query={gql`
       {
-        tasks {
-          id
+        books {
           title
-          is_completed
-          owner {
-            id
-            name
-          }
+          author
         }
       }
     `}
@@ -57,18 +52,13 @@ export const ExchangeRates = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
 
-      return data.tasks.map(({ id, title, is_completed, owner }, index) => (
+      return data.books.map(({ title, author }, index) => (
         <div key={index}>
           <p style={{ paddingLeft: '15px', textAlign: 'left' }}>
-            {`id: ${id}`}
             <br />
             {`title: ${title}`}
             <br />
-            {`is_completed: ${is_completed}`}
-            <br />
-            {`owner.id: ${owner.id}`}
-            <br />
-            {`owner.name: ${owner.name}`}
+            {`author: ${author}`}
           </p>
         </div>
       ));
