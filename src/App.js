@@ -5,7 +5,7 @@ import { ExchangeRates } from './queryql';
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
-    uri: 'http://ee1cfce1.ngrok.io/graphql/',
+    uri: 'https://ee1cfce1.ngrok.io/graphql/',
   // uri: 'http://localhost:4000/',
 });
 
